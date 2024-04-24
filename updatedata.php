@@ -4,7 +4,7 @@ if(isset($_POST["name"]) && isset($_POST["grade"]) && isset($_POST["marks"])){
     $name = $_POST['name'];
     $grade = $_POST['grade'];
     $marks = $_POST['marks'];
-    $sql = "UPDATE results SET `name`= '$name', `class`= '$grade', `marks`= $marks  WHERE id= ".$_GET["id"];
+    $sql = "UPDATE results SET `name`= '$name', `grade`= '$grade', `marks`= $marks  WHERE id= ".$_GET["id"];
     if (mysqli_query($conn, $sql)) {
         header("location: index.php");
     } else {
@@ -36,7 +36,7 @@ if(isset($_POST["name"]) && isset($_POST["grade"]) && isset($_POST["marks"])){
                     while ($row = $result -> fetch_assoc()) { 
                         $Id = $row['id'];
                         $Name = $row['name'];
-                        $Grade = $row['class']; // Corrected the column name here
+                        $Grade = $row['grade']; // Corrected the column name here
                         $Marks = $row['marks'];
             ?>
                             <form action="updatedata.php?id=<?php echo $Id; ?>" method="post">

@@ -8,12 +8,15 @@
     <title>PHP - MYSQL - CRUD</title>
     <!-- CSS only -->
     <link href="dist/css/bootstrap.min.css" rel="stylesheet">
-        <style>
-        table, th, td{
+    <style>
+        table,
+        th,
+        td {
             border: 1px solid grey;
             border-collapse: collapse;
-        }</style>
-    
+        }
+    </style>
+
 </head>
 
 <body>
@@ -21,7 +24,7 @@
         <h1 style="text-align: center;margin: 50px 0;">PHP CRUD operations with MySQL</h1>
         <div class="container">
             <form action="adddata.php" method="post">
-               <div class="row">
+                <div class="row">
                     <div class="form-group col-lg-4">
                         <label for="">Student Name</label>
                         <input type="text" name="name" id="name" class="form-control" required>
@@ -44,7 +47,7 @@
                     <div class="form-group col-lg-2" style="display: grid;align-items:  flex-end;">
                         <input type="submit" name="submit" id="submit" class="btn btn-primary">
                     </div>
-               </div>
+                </div>
             </form>
         </div>
     </section>
@@ -52,27 +55,26 @@
         <div class="container">
             <table class="table table-dark">
                 <thead>
-                  <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Studen Name</th>
-                    <th scope="col">Grade</th>
-                    <th scope="col">Marks</th>
-                    <th scope="col">Edit</th>
-                    <th scope="col">Delete</th>
-                  </tr>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Student Name</th>
+                        <th scope="col">Grade</th>
+                        <th scope="col">Marks</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
+                    </tr>
                 </thead>
                 <tbody>
                     <?php 
                         require_once "conn.php";
                         $sql_query = "SELECT * FROM results";
-                        if ($result = $conn ->query($sql_query)) {
-                            while ($row = $result -> fetch_assoc()) { 
+                        if ($result = $conn->query($sql_query)) {
+                            while ($row = $result->fetch_assoc()) { 
                                 $Id = $row['id'];
                                 $Name = $row['name'];
-                                $Grade = $row['class'];
+                                $Grade = $row['grade']; // Changed 'class' to 'grade' to match database column name
                                 $Marks = $row['marks'];
                     ?>
-                    
                     <tr class="trow">
                         <td><?php echo $Id; ?></td>
                         <td><?php echo $Name; ?></td>
@@ -81,18 +83,16 @@
                         <td><a href="updatedata.php?id=<?php echo $Id; ?>" class="btn btn-primary">Edit</a></td>
                         <td><a href="deletedata.php?id=<?php echo $Id; ?>" class="btn btn-danger">Delete</a></td>
                     </tr>
-
                     <?php
                             } 
                         } 
                     ?>
                 </tbody>
-              </table>
+            </table>
         </div>
     </section>
     <!-- JavaScript Bundle with Popper -->
-    <script src="dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    <script src="dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
 </body>
 

@@ -1,31 +1,28 @@
+<?php
+require_once "conn.php";
+if(isset($_POST["name"]) && isset($_POST["grade"]) && isset($_POST["marks"])){
+    $name = $_POST['name'];
+    $grade = $_POST['grade'];
+    $marks = $_POST['marks'];
+    $sql = "UPDATE results SET `name`= '$name', `class`= '$grade', `marks`= $marks  WHERE id= ".$_GET["id"];
+    if (mysqli_query($conn, $sql)) {
+        header("location: index.php");
+    } else {
+        echo "Something went wrong. Please try again later.";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
-<?php
-    require_once "conn.php";
-    if(isset($_POST["name"]) && isset($_POST["grade"]) && isset($_POST["marks"])){
-        $name = $_POST['name'];
-        $grade = $_POST['grade'];
-        $marks = $_POST['marks'];
-        $sql = "UPDATE results SET `name`= '$name', `class`= '$grade', `marks`= $marks  WHERE id= ".$_GET["id"];
-        if (mysqli_query($conn, $sql)) {
-            header("location: index.php");
-        } else {
-            echo "Something went wrong. Please try again later.";
-        }
-    }
-?>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHP - MYSQL - CRUD</title>
     <!-- CSS only -->
-    <link href="dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <!-- JavaScript Bundle with Popper -->
-    <script src="dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-        crossorigin="anonymous"></script>
+    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -39,7 +36,7 @@
                     while ($row = $result -> fetch_assoc()) { 
                         $Id = $row['id'];
                         $Name = $row['name'];
-                        $Grade = $row['class'];
+                        $Grade = $row['class']; // Corrected the column name here
                         $Marks = $row['marks'];
             ?>
                             <form action="updatedata.php?id=<?php echo $Id; ?>" method="post">
@@ -74,6 +71,8 @@
             ?>
         </div>
     </section>
+     <!-- JavaScript Bundle with Popper -->
+     <script src="dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

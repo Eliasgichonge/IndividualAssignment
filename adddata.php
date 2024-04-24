@@ -3,7 +3,7 @@ require_once "conn.php"; // Make sure this file contains valid database connecti
 
 if (isset($_POST['submit'])) {
     $name = $_POST['name'];
-    $grade = $_POST['grade'];
+    $grade = $_POST['grade']; // Corrected column name from 'class' to 'grade'
     $marks = $_POST['marks'];
 
     if (!empty($name) && !empty($grade) && !empty($marks)) {

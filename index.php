@@ -33,11 +33,11 @@
                         <label for="">Grade</label>
                         <select name="grade" id="grade" class="form-control" required>
                             <option value="">Select a Grade</option>
-                            <option value="grade6">Grade 6</option>
-                            <option value="grade7">Grade 7</option>
-                            <option value="grade8">Grade 8</option>
-                            <option value="grade9">Grade 9</option>
-                            <option value="grade10">Grade 10</option>
+                            <option value="grade6">Grade-6</option>
+                            <option value="grade7">Grade-7</option>
+                            <option value="grade8">Grade-8</option>
+                            <option value="grade9">Grade-9</option>
+                            <option value="grade10">Grade-10</option>
                         </select>
                     </div>
                     <div class="form-group col-lg-3">

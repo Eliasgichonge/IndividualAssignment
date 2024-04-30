@@ -1,3 +1,17 @@
+<?php
+header('Content-type: application/json');
+
+if ($_SERVER['REQUEST_METHOD']==='GET') {
+    $reponse = array(
+        'message'=> 'hello, world'
+    );
+
+    echo json_encode($reponse);
+} else {
+    http_response_code(405);
+    echo json_encode(array('error' => 'Method Not allowed'));
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
